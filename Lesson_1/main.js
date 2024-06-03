@@ -1,0 +1,12 @@
+let userName = prompt('Введите имя пользователя')
+let city = prompt('Введите город пользователя')
+let street = prompt('Введите улицу пользователя')
+let house = Number(prompt('Введите номер дома пользователя'))
+let room = Number(prompt('Введите номер квартиры пользователя'))
+
+document.write(`<h1>Адрес пользователя</h1>`)
+document.write(`<p>Имя: <strong>${userName}</strong></p>`)
+document.write(`<p>Город: <strong>${city}</strong></p>`)
+document.write(`<p>Улица: <strong>${street}</strong></p>`)
+document.write(`<p>Дом: <strong>${house}</strong></p>`)
+document.write(`<p>Квартира: <strong>${room}</strong></p>`)
