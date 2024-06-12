@@ -81,7 +81,7 @@ ul {
 }
 li {
    width: 200px;
-   height: 200px;
+   min-height: 200px;
    background-color: lightgreen;
    border-radius: 20px;
    padding: 10px;
@@ -92,7 +92,14 @@ li {
    justify-content: center;
    text-align: center;
    font-weight: 600;
-   font-size: 15px;
+   font-size: 18px;
    margin: 0;
    text-transform: uppercase;
+}
+
+.block__text {
+   display: flex;
+   margin: 20px auto;
+   font-size: 25px;
+   font-weight: 600;
 }

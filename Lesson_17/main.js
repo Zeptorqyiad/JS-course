@@ -5,6 +5,9 @@ let title = document.createElement('h1')
 title.textContent = 'Планер на день'
 title.classList.add('title__text')
 
+// Создание счетчика
+let counter = 0
+
 // Создание блока input и button
 let blockInp = document.createElement('div')
 blockInp.classList.add('block__inp')
@@ -29,13 +32,14 @@ let list = document.createElement('ul')
 
 // Функция получения данных
 function getWork(task) {
+   counter++
    // Добавление списка задач
    let listItem = document.createElement('li')
    let itemText = document.createElement('p')
    itemText.classList.add('do__task')
 
    // Вывод задачи
-   itemText.textContent = `${task}`
+   itemText.textContent = `${counter}. ${task}`
 
    // Создание коробки list
    list.append(listItem)
@@ -51,7 +55,12 @@ button.onclick = function () {
    input.value = ''
 }
 
+// Количетсво выполненных задач
+let blockTextCounter = document.createElement('p')
+blockTextCounter.classList.add('block__text')
+blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
+
 // Вывод коробки
 document.body.prepend(container)
-container.append(title, blockInp, list)
+container.append(title, blockInp, blockTextCounter, list)
 blockInp.append(input, button)
