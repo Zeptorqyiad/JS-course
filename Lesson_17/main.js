@@ -53,13 +53,21 @@ button.onclick = function () {
 // Функция создания кнопок
 function getButton(text, classList, type = '') {
    let buttonList = document.createElement('button')
-
    buttonList.textContent = text
    buttonList.classList.add(classList)
    buttonList.type = type
-
    return buttonList
 }
+
+function getCounter(counter) {
+   // Количетсво выполненных задач
+   let blockTextCounter = document.createElement('p')
+   blockTextCounter.classList.add('block__text')
+   blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
+   return blockTextCounter
+}
+
+let textCounter = getCounter(counter)
 
 // Дополнительные кнопки в списке задач
 let blockBtn = document.createElement('div')
@@ -74,13 +82,8 @@ let renameBtn = getButton('Изменить', 'action__btn')
 // Кнопка удаления задачи
 let deleteBtn = getButton('Удалить', 'action__btn', 'sumbit')
 
-// Количетсво выполненных задач
-let blockTextCounter = document.createElement('p')
-blockTextCounter.classList.add('block__text')
-blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
-
 // Вывод коробки
 document.body.prepend(container)
-container.append(title, blockInp, blockTextCounter, list)
+container.append(title, blockInp, textCounter, list)
 blockInp.append(input, button)
 blockBtn.append(actionDo, renameBtn, deleteBtn)
