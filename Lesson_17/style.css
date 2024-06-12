@@ -38,7 +38,7 @@ body {
    border: none;
    border-radius: 10px;
    font-size: 25px;
-   background-color: #cbebcb;
+   background-color: white;
    @media (max-width: 668.98px) {
       margin: 0 auto;
       max-width: 450px;
@@ -80,9 +80,12 @@ ul {
    }
 }
 li {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
    width: 200px;
    min-height: 200px;
-   background-color: lightgreen;
+   background-color: white;
    border-radius: 20px;
    padding: 10px;
 }
@@ -102,4 +105,13 @@ li {
    margin: 20px auto;
    font-size: 25px;
    font-weight: 600;
+}
+
+.action__block {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.action__btn {
 }
