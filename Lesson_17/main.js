@@ -1,3 +1,21 @@
+// Функция создания кнопок
+function getButton(text, classList, type = '') {
+   let buttonList = document.createElement('button')
+   buttonList.textContent = text
+   buttonList.classList.add(classList)
+   buttonList.type = type
+   return buttonList
+}
+
+// Счетчик событий
+function getCounter(counter) {
+   // Количетсво выполненных задач
+   let blockTextCounter = document.createElement('p')
+   blockTextCounter.classList.add('block__text')
+   blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
+   return blockTextCounter
+}
+
 // Создание коробки
 let container = document.createElement('div')
 container.classList.add('container')
@@ -27,20 +45,30 @@ let list = document.createElement('ul')
 
 // Функция получения данных
 function getWork(task) {
-   counter++
-   // Добавление списка задач
    let listItem = document.createElement('li')
+
    let itemText = document.createElement('p')
    itemText.classList.add('do__task')
+   itemText.textContent = task
 
-   // Вывод задачи
-   itemText.textContent = `${counter}. ${task}`
+   // Изменить название задачи
+   renameBtn.onclick = function () {
+      let newTask = prompt('Введите новую задачу', itemText.textContent)
+      itemText.textContent = newTask
+   }
+
+   // Удаление listItem
+   deleteBtn.onclink = function () {
+      listItem.remove()
+   }
 
    // Создание коробки list
    list.append(listItem)
    listItem.append(itemText, blockBtn)
    return listItem
 }
+
+let textCounter = getCounter(counter)
 
 // Функция отправки задачи
 button.onclick = function () {
@@ -50,31 +78,12 @@ button.onclick = function () {
    input.value = ''
 }
 
-// Функция создания кнопок
-function getButton(text, classList, type = '') {
-   let buttonList = document.createElement('button')
-   buttonList.textContent = text
-   buttonList.classList.add(classList)
-   buttonList.type = type
-   return buttonList
-}
-
-function getCounter(counter) {
-   // Количетсво выполненных задач
-   let blockTextCounter = document.createElement('p')
-   blockTextCounter.classList.add('block__text')
-   blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
-   return blockTextCounter
-}
-
-let textCounter = getCounter(counter)
-
 // Дополнительные кнопки в списке задач
 let blockBtn = document.createElement('div')
 blockBtn.classList.add('action__block')
 
 // Кнопка выполнения задачи
-let actionDo = getButton('Выполнить', 'complete__btn')
+let actionDo = getButton('Выполнено', 'complete__btn')
 
 // Кнопка изменения текста задачи
 let renameBtn = getButton('Изменить', 'action__btn')
