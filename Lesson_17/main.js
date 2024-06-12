@@ -65,10 +65,13 @@ function getButton(text, classList, type = '') {
 let blockBtn = document.createElement('div')
 blockBtn.classList.add('action__block')
 
-let actionDo = getButton('Выполнить', 'action__btn')
+// Кнопка выполнения задачи
+let actionDo = getButton('Выполнить', 'complete__btn')
 
+// Кнопка изменения текста задачи
 let renameBtn = getButton('Изменить', 'action__btn')
 
+// Кнопка удаления задачи
 let deleteBtn = getButton('Удалить', 'action__btn', 'sumbit')
 
 // Количетсво выполненных задач
