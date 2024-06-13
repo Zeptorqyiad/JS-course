@@ -7,17 +7,6 @@ function getButton(text, classList, type = '') {
    return buttonList
 }
 
-// Создание счетчика
-let counter = 0
-
-// Счетчик событий
-function getCounter(counter) {
-   let blockTextCounter = document.createElement('p')
-   blockTextCounter.classList.add('block__text')
-   blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
-   return blockTextCounter
-}
-
 // Создание коробки
 let container = document.createElement('div')
 container.classList.add('container')
@@ -87,8 +76,6 @@ function getWork(task) {
    return listItem
 }
 
-let textCounter = getCounter(counter)
-
 // Функция отправки задачи
 button.onclick = function () {
    let task = input.value
@@ -99,5 +86,5 @@ button.onclick = function () {
 
 // Вывод коробки
 document.body.prepend(container)
-container.append(title, blockInp, textCounter, list)
+container.append(title, blockInp, list)
 blockInp.append(input, button)
