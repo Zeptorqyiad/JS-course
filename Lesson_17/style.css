@@ -53,15 +53,15 @@ body {
    border-radius: 10px;
    color: #fff;
    font-size: 25px;
-   background-color: #b50707;
+   background-color: #5e2eb1;
    cursor: pointer;
    transition: all 0.3s ease 0s;
 }
 .btn:hover {
-   background-color: #d81212;
+   background-color: #ad34dd;
 }
 .btn:active {
-   background-color: #6a0808;
+   background-color: #4a199f;
    color: #fff;
 }
 ul li {
@@ -73,8 +73,10 @@ ul {
    gap: 25px;
    padding: 0;
    max-width: 650px;
+   margin: 0;
    @media (max-width: 668.98px) {
-      display: flex;
+		display: flex;
+		flex-wrap: wrap;
       justify-content: center;
       margin-top: 20px;
    }
@@ -138,5 +140,13 @@ li {
    }
    &:active {
       background-color: #4c4c4c;
+   }
+}
+
+li.complete {
+   transition: all 0.9s ease 0s;
+   background-color: green;
+   & p {
+      color: #ffffff;
    }
 }

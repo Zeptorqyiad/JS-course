@@ -7,9 +7,11 @@ function getButton(text, classList, type = '') {
    return buttonList
 }
 
+// Создание счетчика
+let counter = 0
+
 // Счетчик событий
 function getCounter(counter) {
-   // Количетсво выполненных задач
    let blockTextCounter = document.createElement('p')
    blockTextCounter.classList.add('block__text')
    blockTextCounter.textContent = `У вас ${counter} задач на сегодня`
@@ -22,9 +24,6 @@ container.classList.add('container')
 let title = document.createElement('h1')
 title.textContent = 'Планер на день'
 title.classList.add('title__text')
-
-// Создание счетчика
-let counter = 0
 
 // Создание блока input и button
 let blockInp = document.createElement('div')
@@ -51,6 +50,27 @@ function getWork(task) {
    itemText.classList.add('do__task')
    itemText.textContent = task
 
+   // Дополнительные кнопки в списке задач
+   let blockBtn = document.createElement('div')
+   blockBtn.classList.add('action__block')
+
+   // Кнопка выполнения задачи
+   let actionDo = getButton('Выполнено', 'complete__btn')
+
+   // Кнопка изменения текста задачи
+   let renameBtn = getButton('Изменить', 'action__btn')
+
+   // Кнопка удаления задачи
+   let deleteBtn = getButton('Удалить', 'action__btn', 'reset')
+
+   // Выполнение задачи
+   actionDo.onclick = function () {
+      listItem.classList.add('complete')
+      renameBtn.style.display = 'none'
+      actionDo.style.display = 'none'
+      deleteBtn.style.backgroundColor = '#3c3c3c'
+   }
+
    // Изменить название задачи
    renameBtn.onclick = function () {
       let newTask = prompt('Введите новую задачу', itemText.textContent)
@@ -58,12 +78,11 @@ function getWork(task) {
    }
 
    // Удаление listItem
-   deleteBtn.onclink = function () {
+   deleteBtn.onclick = function () {
       listItem.remove()
    }
 
-   // Создание коробки list
-   list.append(listItem)
+   blockBtn.append(actionDo, renameBtn, deleteBtn) // Коробка кнопок
    listItem.append(itemText, blockBtn)
    return listItem
 }
@@ -78,21 +97,7 @@ button.onclick = function () {
    input.value = ''
 }
 
-// Дополнительные кнопки в списке задач
-let blockBtn = document.createElement('div')
-blockBtn.classList.add('action__block')
-
-// Кнопка выполнения задачи
-let actionDo = getButton('Выполнено', 'complete__btn')
-
-// Кнопка изменения текста задачи
-let renameBtn = getButton('Изменить', 'action__btn')
-
-// Кнопка удаления задачи
-let deleteBtn = getButton('Удалить', 'action__btn', 'sumbit')
-
 // Вывод коробки
 document.body.prepend(container)
 container.append(title, blockInp, textCounter, list)
 blockInp.append(input, button)
-blockBtn.append(actionDo, renameBtn, deleteBtn)
