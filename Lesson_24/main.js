@@ -63,6 +63,9 @@ let dogGroup1 = getNewGroup('Собаки до 5 кг', 'group-box_green')
 // Создание группы от 5 кг до 10
 let dogGroup2 = getNewGroup('Собаки от 5 кг до 10 кг', 'group-box_blue')
 
+// Создание группы от 10 кг
+let dogGroup3 = getNewGroup('Собаки от 5 кг до 10 кг', 'group-box_orange')
+
 // Добавление собаки в группу
 addBtn.onclick = function () {
    let dogNameValue = dogNameInp.value
@@ -78,9 +81,14 @@ addBtn.onclick = function () {
       dogGroup2.append(newDog)
    }
 
+   if (dogWeightValue > 10) {
+      let newDog = getDogCard(dogNameValue, dogWeightValue)
+      dogGroup3.append(newDog)
+   }
+
    dogNameInp.value = ''
    dogWeightInp.value = ''
 }
 
-wrap.append(dogGroup1, dogGroup2)
+wrap.append(dogGroup1, dogGroup2, dogGroup3)
 document.body.append(title, addBox, wrap)
