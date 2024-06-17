@@ -14,4 +14,46 @@ body {
    margin: 0 auto;
    padding: 30px;
    max-width: 300px;
+   border-radius: 5px;
+}
+
+.text-field {
+   border: 1px solid lightblue;
+   border-radius: 10px;
+   padding: 8px 18px;
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+.title {
+   margin-top: 0;
+   margin-bottom: 20px;
+   font-size: 24px;
+   display: flex;
+   justify-content: center;
+}
+
+.btn {
+   background-color: rgb(126, 199, 223);
+   color: white;
+   border: none;
+   border-radius: 5px;
+   padding: 8px 18px;
+   width: 100%;
+   cursor: pointer;
+   transition: background-color 0.3s ease 0s;
+}
+
+.btn:hover {
+   background-color: rgb(158, 202, 216);
+}
+
+.btn:active {
+   background-color: rgb(85, 185, 216);
+}
+
+.condition {
+   display: block;
+   margin-bottom: 20px;
+   font-size: 16px;
 }
