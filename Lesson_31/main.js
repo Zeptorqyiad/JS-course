@@ -47,7 +47,7 @@ function getTable() {
    return tbody
 }
 
-function getUserTr(userName, userYear) {
+function getUserTr(userName, userYear, index) {
    let age = getAge(userYear)
 
    let tr = document.createElement('tr')
@@ -58,6 +58,12 @@ function getUserTr(userName, userYear) {
 
    let removeBtn = document.createElement('button')
    removeBtn.textContent = 'Удалить'
+
+   removeBtn.onclick = function () {
+      usersName.splice(index, 1)
+      usersYear.splice(index, 1)
+      render(usersName, usersYear)
+   }
 
    nameTd.textContent = userName
    yearTd.textContent = userYear
@@ -90,13 +96,16 @@ addBtn.onclick = function () {
    usersName.push(nameValue)
    usersYear.push(yearValue)
 
-   userNameInp.textContent = ''
-   userYearInp.textContent = ''
+   render(usersName, usersYear)
+
+   userNameInp.value = ''
+   userYearInp.value = ''
 }
 
 function render(nameArr, yearArr) {
+   userTable.innerHTML = ''
    for (let i = 0; i < nameArr.length; i++) {
-      let newUserTr = getUserTr(nameArr[i], yearArr[i])
+      let newUserTr = getUserTr(nameArr[i], yearArr[i], i)
       userTable.append(newUserTr)
    }
 }
