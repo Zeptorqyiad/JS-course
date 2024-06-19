@@ -1,0 +1,56 @@
+* {
+   box-sizing: border-box;
+}
+body {
+   padding: 40px;
+   margin: 0;
+   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+   background-color: rgb(196, 196, 196);
+}
+.open-btn {
+   border: none;
+   color: white;
+   border-radius: 10px;
+   background-color: #8a2be2;
+   outline: none;
+   padding: 14px 24px;
+   transition: background-color 0.3s ease 0s;
+   cursor: pointer;
+   margin-bottom: 10px;
+}
+.open-btn:hover {
+   background-color: #6419aa;
+}
+.open-btn:active {
+   background-color: #b265f9;
+}
+.menu {
+   margin: 0;
+   list-style-type: none;
+   padding: 0;
+   background-color: #fff;
+   max-width: 280px;
+   border-radius: 10px;
+   overflow: hidden;
+   display: none;
+}
+
+.menu.open {
+   display: block;
+}
+
+.menu__link {
+   display: block;
+   text-decoration: none;
+   padding: 15px 30px;
+   color: rgb(31, 31, 31);
+   transition: background-color 0.3s ease 0s;
+}
+
+.menu__link:hover {
+   background-color: rgb(221, 221, 221);
+}
+
+.menu__link:active {
+   background-color: rgb(194, 194, 194);
+}
