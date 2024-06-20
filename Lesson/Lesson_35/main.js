@@ -4,7 +4,12 @@
 
 for (let i = 0; i < 7; i++) {
    let card = document.createElement('div')
-   card.classList.add('blue-card', 'green-card')
+
+   if (i === 4) {
+      card.classList.add('blue-card')
+   } else {
+      card.classList.add('green-card')
+   }
 
    document.body.append(card)
 }
