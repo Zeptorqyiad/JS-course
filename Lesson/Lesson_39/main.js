@@ -40,7 +40,7 @@ function render(arr) {
       removeBtn.textContent = 'Вытащить из рюкзака'
 
       removeBtn.onclick = function () {
-         arr.splice(0, 1) // Удаляем элемент из массива
+         arr.splice(i, 1) // Удаляем элемент из массива
          render(arr) // Перерисовываем список
       }
 
