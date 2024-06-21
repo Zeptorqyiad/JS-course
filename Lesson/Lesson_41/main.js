@@ -5,8 +5,19 @@ let priceArray = []
 // Счетчик
 let index = 0
 
+// Главный контейнер
+let container = document.createElement('div')
+container.classList.add('container')
+
+// Заголовок сайта
 let title = document.createElement('h1')
 title.textContent = 'Чек покупки'
+title.classList.add('title')
+
+// Функция создания жирного текста
+function getStrong(text) {
+   return `<strong>${text}</strong>`
+}
 
 // Создание функции возврата input
 function getInput(placeholder, className, type) {
@@ -19,7 +30,7 @@ function getInput(placeholder, className, type) {
 
 // Создание оболочки шапки
 let box = document.createElement('div')
-// box.classList.add('')
+box.classList.add('input-wrap')
 
 // Создание input
 let nameInp = getInput('Название товара', 'inp', 'text')
@@ -28,25 +39,35 @@ let priceInp = getInput('Цена', 'inp', 'number')
 
 // Создание кнопки добавления
 let addBtn = document.createElement('button')
+addBtn.classList.add('add-btn')
 addBtn.textContent = 'Добавить'
 
+// Добавление товара
 addBtn.onclick = function () {
    index++
    let itemList = document.createElement('li')
-   // itemList.textContent = `${index}`
+   itemList.classList.add('item-list')
+
+   // Значения input
    let nameInpValue = nameInp.value
    let countInpValue = countInp.value
    let priceInpValue = priceInp.value
 
-   itemList.append(nameInpValue, countInpValue, priceInpValue)
+   itemList.textContent = `${index} - ${nameInpValue} - ${countInpValue} - ${priceInpValue}`
+
+   // Очищение поля input
+   nameInp.value = ''
+   countInp.value = ''
+   priceInp.value = ''
+
    list.append(itemList)
-   return itemList
 }
 
 // Создание листа покупок
 let list = document.createElement('ul')
-// list.classList.add('')
+list.classList.add('list')
 
 // Добавление в обёртку
 box.append(nameInp, countInp, priceInp, addBtn)
-document.body.append(title, box, list)
+container.append(title, box, list)
+document.body.prepend(container)
