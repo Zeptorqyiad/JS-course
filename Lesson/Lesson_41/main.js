@@ -3,7 +3,7 @@ let productArray = []
 let priceArray = []
 
 // Счетчик
-let index = 0
+let index = 1
 
 // Главный контейнер
 let container = document.createElement('div')
@@ -25,7 +25,10 @@ function getMultiplyPrice() {
 
 // Функция создания жирного текста
 function getStrong(text) {
-   return `<strong>${text}</strong>`
+   let strongText = document.createElement('strong')
+   strongText.append(text)
+   strongText.classList.add('strong-text')
+   return strongText
 }
 
 // Создание функции возврата input
@@ -72,7 +75,7 @@ function getItem(index, name, count, price, totalPrice) {
    let nameBoxText = document.createElement('p')
    nameBoxText.textContent = 'Название'
    nameBoxText.classList.add('text')
-   let nameValue = name
+   let nameValue = getStrong(name)
    nameBox.append(nameBoxText, nameValue)
 
    // Создание блока количества товара
@@ -81,7 +84,7 @@ function getItem(index, name, count, price, totalPrice) {
    let countBoxText = document.createElement('p')
    countBoxText.textContent = 'Кол-во'
    countBoxText.classList.add('text')
-   let countValue = count
+   let countValue = getStrong(count)
    countBox.append(countBoxText, countValue)
 
    // Создание блока цены товара
@@ -90,7 +93,7 @@ function getItem(index, name, count, price, totalPrice) {
    let priceBoxText = document.createElement('p')
    priceBoxText.textContent = 'Цена'
    priceBoxText.classList.add('text')
-   let priceValue = price
+   let priceValue = getStrong(price)
    priceBox.append(priceBoxText, priceValue)
 
    // Создание блока общей суммы товара
@@ -99,7 +102,7 @@ function getItem(index, name, count, price, totalPrice) {
    let totalPriceBoxText = document.createElement('p')
    totalPriceBoxText.textContent = 'Общая цена'
    totalPriceBoxText.classList.add('text')
-   let totalPriceValue = totalPrice
+   let totalPriceValue = getStrong(totalPrice)
    totalPriceBox.append(totalPriceBoxText, totalPriceValue)
 
    // Создание блока кнопок изменения и удаления товара
@@ -109,25 +112,30 @@ function getItem(index, name, count, price, totalPrice) {
    blockBtn.classList.add('btn-block')
    blockBtn.append(renameBtn, removeBtn)
 
-   // addBtn.onclick = function () {
-   //    let nameInpValue = nameInp.value
-   //    let countInpValue = Number(countInp.value)
-   //    let priceInpValue = Number(priceInp.value)
-
-   // // Очищение поля input
-   //    nameInp.value = ''
-   //    countInp.value = ''
-   //    priceInp.value = ''
-   // }
-
    // Добавление общей структуры всех блоков
    itemList.append(index, nameBox, countBox, priceBox, totalPriceBox, blockBtn)
    list.append(itemList)
    return itemList
 }
 
-getItem(index, 'Хлеб', 2, 40, getMultiplyPrice())
-getItem(index, 'Молоко', 2, 80, getMultiplyPrice())
+addBtn.onclick = function () {
+   let nameInpValue = nameInp.value
+   let countInpValue = Number(countInp.value)
+   let priceInpValue = Number(priceInp.value)
+
+   getItem(
+      index++,
+      nameInpValue,
+      countInpValue,
+      priceInpValue,
+      getMultiplyPrice()
+   )
+
+   // Очищение поля input
+   nameInp.value = ''
+   countInp.value = ''
+   priceInp.value = ''
+}
 
 // Добавление в обёртку
 box.append(nameInp, countInp, priceInp, addBtn)
