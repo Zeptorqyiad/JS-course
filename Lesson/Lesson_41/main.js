@@ -57,15 +57,12 @@ let priceInp = getInput('Цена', 'inp', 'number')
 
 // Создание кнопки добавления
 let addBtn = getButton('submit', 'Добавить', 'add-btn')
-let renameBtn = getButton('submit', 'Изменить', 'rename-btn')
-let removeBtn = getButton('', 'Удалить', 'remove-btn')
 
 // Создание листа покупок
 let list = document.createElement('ul')
 list.classList.add('list')
 
 function getItem(index, name, count, price, totalPrice) {
-   index++
    let itemList = document.createElement('li')
    itemList.classList.add('item-list')
 
@@ -105,7 +102,9 @@ function getItem(index, name, count, price, totalPrice) {
    let totalPriceValue = totalPrice
    totalPriceBox.append(totalPriceBoxText, totalPriceValue)
 
-   // Создание блока общей суммы товара
+   // Создание блока кнопок изменения и удаления товара
+   let renameBtn = getButton('submit', 'Изменить', 'rename-btn')
+   let removeBtn = getButton('', 'Удалить', 'remove-btn')
    let blockBtn = document.createElement('div')
    blockBtn.classList.add('btn-block')
    blockBtn.append(renameBtn, removeBtn)
@@ -128,6 +127,7 @@ function getItem(index, name, count, price, totalPrice) {
 }
 
 getItem(index, 'Хлеб', 2, 40, getMultiplyPrice())
+getItem(index, 'Молоко', 2, 80, getMultiplyPrice())
 
 // Добавление в обёртку
 box.append(nameInp, countInp, priceInp, addBtn)
