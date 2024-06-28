@@ -73,10 +73,16 @@ backetText.classList.add('backet-text')
 backetText.textContent = 'Итоговая стоимость:'
 let backetValue = document.createElement('p')
 backetValue.classList.add('backet-value')
+backetValue.textContent = 0
 backet.append(backetText, backetValue)
 
+let listText = document.createElement('p')
+
 if (productArray.length === 0) {
-   backet.style.display = 'none'
+   listText.textContent = 'Положите ваш первый товар в корзину!'
+   listText.classList.add('list-text')
+} else {
+   listText.style.display = 'none'
 }
 
 function getItem(index, name, count, price, totalPrice) {
@@ -122,7 +128,7 @@ function getItem(index, name, count, price, totalPrice) {
    totalPriceValue.textContent = `${totalPrice} руб.`
    totalPriceBox.append(totalPriceBoxText, totalPriceValue)
 
-   // Цикл суммирования данных в массиве с ценами
+   // Создание массива для корзины
    priceArray.push(totalPrice)
    let sum = 0
    for (let i = 0; i < priceArray.length; i++) {
@@ -135,14 +141,15 @@ function getItem(index, name, count, price, totalPrice) {
    let removeBtn = getButton('', 'Удалить', 'remove-btn')
    let blockBtn = document.createElement('div')
    blockBtn.classList.add('btn-block')
-   blockBtn.append(renameBtn, removeBtn)
 
+   // Кнопка удаления товара
    removeBtn.onclick = function () {
-      productArray.splice(index, 1)
+      priceArray.splice(index, 1) // Удаляем элемент из массива
    }
 
    // Добавление общей структуры всех блоков
    itemList.append(index, nameBox, countBox, priceBox, totalPriceBox, blockBtn)
+   blockBtn.append(renameBtn, removeBtn)
    list.append(itemList)
    return itemList
 }
@@ -186,5 +193,5 @@ addBtn.onclick = function () {
 
 // Добавление в обёртку
 box.append(nameInp, countInp, priceInp, addBtn)
-container.append(title, box, list)
+container.append(title, box, listText, list, backet)
 document.body.prepend(container)
