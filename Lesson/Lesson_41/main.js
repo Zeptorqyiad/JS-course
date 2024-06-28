@@ -65,6 +65,15 @@ let addBtn = getButton('submit', 'Добавить', 'add-btn')
 let list = document.createElement('ul')
 list.classList.add('list')
 
+// Создание блока общей стоимости корзины
+let backet = document.createElement('div')
+backet.classList.add('backet')
+let backetText = document.createElement('p')
+backetText.textContent = 'Итоговая стоимость:'
+let backetValue = document.createElement('p')
+backetValue.textContent = priceArray
+backet.append(backetText, backetValue)
+
 function getItem(index, name, count, price, totalPrice) {
    let itemList = document.createElement('li')
    itemList.classList.add('item-list')
@@ -84,7 +93,8 @@ function getItem(index, name, count, price, totalPrice) {
    let countBoxText = document.createElement('p')
    countBoxText.textContent = 'Кол-во'
    countBoxText.classList.add('text')
-   let countValue = getStrong(count)
+   let countValue = document.createElement('p')
+   countValue.textContent = `${count} шт.`
    countBox.append(countBoxText, countValue)
 
    // Создание блока цены товара
@@ -93,7 +103,8 @@ function getItem(index, name, count, price, totalPrice) {
    let priceBoxText = document.createElement('p')
    priceBoxText.textContent = 'Цена'
    priceBoxText.classList.add('text')
-   let priceValue = getStrong(price)
+   let priceValue = document.createElement('p')
+   priceValue.textContent = `${price} руб.`
    priceBox.append(priceBoxText, priceValue)
 
    // Создание блока общей суммы товара
@@ -102,8 +113,12 @@ function getItem(index, name, count, price, totalPrice) {
    let totalPriceBoxText = document.createElement('p')
    totalPriceBoxText.textContent = 'Общая цена'
    totalPriceBoxText.classList.add('text')
-   let totalPriceValue = getStrong(totalPrice)
+   let totalPriceValue = document.createElement('p')
+   totalPriceValue.textContent = `${totalPrice} руб.`
    totalPriceBox.append(totalPriceBoxText, totalPriceValue)
+
+   priceArray.push(totalPrice)
+   console.log(priceArray)
 
    // Создание блока кнопок изменения и удаления товара
    let renameBtn = getButton('submit', 'Изменить', 'rename-btn')
@@ -119,10 +134,14 @@ function getItem(index, name, count, price, totalPrice) {
 }
 
 addBtn.onclick = function () {
+   // Присваивание значений value в полях ввода
    let nameInpValue = nameInp.value
    let countInpValue = Number(countInp.value)
    let priceInpValue = Number(priceInp.value)
 
+   productArray.push(nameInpValue)
+
+   // Создание списка при вызове функции getItem
    getItem(
       index++,
       nameInpValue,
@@ -139,5 +158,5 @@ addBtn.onclick = function () {
 
 // Добавление в обёртку
 box.append(nameInp, countInp, priceInp, addBtn)
-container.append(title, box, list)
+container.append(title, box, list, backet)
 document.body.prepend(container)
