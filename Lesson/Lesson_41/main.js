@@ -69,10 +69,15 @@ list.classList.add('list')
 let backet = document.createElement('div')
 backet.classList.add('backet')
 let backetText = document.createElement('p')
+backetText.classList.add('backet-text')
 backetText.textContent = 'Итоговая стоимость:'
 let backetValue = document.createElement('p')
-backetValue.textContent = priceArray
+backetValue.classList.add('backet-value')
 backet.append(backetText, backetValue)
+
+if (productArray.length === 0) {
+   backet.style.display = 'none'
+}
 
 function getItem(index, name, count, price, totalPrice) {
    let itemList = document.createElement('li')
@@ -117,8 +122,13 @@ function getItem(index, name, count, price, totalPrice) {
    totalPriceValue.textContent = `${totalPrice} руб.`
    totalPriceBox.append(totalPriceBoxText, totalPriceValue)
 
+   // Цикл суммирования данных в массиве с ценами
    priceArray.push(totalPrice)
-   console.log(priceArray)
+   let sum = 0
+   for (let i = 0; i < priceArray.length; i++) {
+      sum += priceArray[i]
+   }
+   backetValue.textContent = `${sum} руб.`
 
    // Создание блока кнопок изменения и удаления товара
    let renameBtn = getButton('submit', 'Изменить', 'rename-btn')
@@ -126,6 +136,10 @@ function getItem(index, name, count, price, totalPrice) {
    let blockBtn = document.createElement('div')
    blockBtn.classList.add('btn-block')
    blockBtn.append(renameBtn, removeBtn)
+
+   removeBtn.onclick = function () {
+      productArray.splice(index, 1)
+   }
 
    // Добавление общей структуры всех блоков
    itemList.append(index, nameBox, countBox, priceBox, totalPriceBox, blockBtn)
@@ -140,6 +154,20 @@ addBtn.onclick = function () {
    let priceInpValue = Number(priceInp.value)
 
    productArray.push(nameInpValue)
+
+   // Проверка валидности полей ввода
+   if (nameInpValue === '') {
+      alert('Вы не ввели название товара')
+      return
+   }
+   if (countInpValue === 0 || countInpValue === '') {
+      alert('Введите количество товара')
+      return
+   }
+   if (priceInpValue === 0 || priceInpValue === '') {
+      alert('Введите цену товара')
+      return
+   }
 
    // Создание списка при вызове функции getItem
    getItem(
@@ -158,5 +186,5 @@ addBtn.onclick = function () {
 
 // Добавление в обёртку
 box.append(nameInp, countInp, priceInp, addBtn)
-container.append(title, box, list, backet)
+container.append(title, box, list)
 document.body.prepend(container)

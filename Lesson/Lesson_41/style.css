@@ -109,6 +109,13 @@ body {
    color: white;
    font-size: 18px;
    cursor: pointer;
+   transition: background-color 0.3s ease 0s;
+}
+.rename-btn:hover {
+   background-color: #1ac51a;
+}
+.rename-btn:active {
+   background-color: #046904;
 }
 .remove-btn {
    padding: 10px;
@@ -118,7 +125,27 @@ body {
    color: white;
    font-size: 18px;
    cursor: pointer;
+   transition: background-color 0.3s ease 0s;
+}
+.remove-btn:hover {
+   background-color: #f52a2a;
+}
+.remove-btn:active {
+   background-color: #9e0c0c;
 }
 .strong-text {
    font-size: 20px;
+}
+.backet {
+   display: flex;
+   justify-content: space-between;
+   padding: 18px 24px;
+   border-radius: 10px;
+   background-color: #4f4f4f;
+   margin-top: 20px;
+}
+.backet-value,
+.backet-text {
+   font-size: 30px;
+   color: white;
 }
