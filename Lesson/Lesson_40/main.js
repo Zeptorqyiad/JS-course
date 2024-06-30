@@ -50,7 +50,6 @@ function render(arr, valueArr) {
    }
 }
 
-
 // Запускаем отрисовку списка при загрузке страницы
 render(productArray, valueArray)
 
