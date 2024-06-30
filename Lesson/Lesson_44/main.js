@@ -1,12 +1,13 @@
-function getCard() {
-   let card = {
-      title: 'Название',
-      img: 'https://cs13.pikabu.ru/avatars/7884/x7884263-1761183743.png',
-      desc: 'Описание карточки',
-   }
+// Функция возрата кнопки
+function getAddBtn(text) {
+   let buttonAdd = document.createElement('button')
+   buttonAdd.textContent = text
+   return
+}
 
-   // Создание элементов на странице
-   let cardElement = document.createElement('div')
+// Функция возврата карточки
+function getCard(card) {
+   let cardElement = document.createElement('li')
    let cardImage = document.createElement('img')
    let cardTitle = document.createElement('h2')
    let cardDesc = document.createElement('p')
@@ -21,7 +22,7 @@ function getCard() {
    cardRemoveBtn.classList.add('card-remove')
    cardImportantBtn.classList.add('card-btn')
 
-   //
+   // Присваивание объектного значния элементу карточки
    cardTitle.textContent = card.title
    cardImage.src = card.img
    cardDesc.textContent = card.desc
@@ -42,16 +43,19 @@ function getCard() {
    return cardElement
 }
 
+// Функция возврата списка ul
 function getList() {
    let ul = document.createElement('ul')
    ul.classList.add('list')
    return ul
 }
 
+// Присваивание списку функцию возвращающую ul
 let list = getList()
 
-let newCard = getCard()
+// Возврат функции добавления кнопки
+let addBtn = getAddBtn('Добавить новую заметку')
 
-list.append(newCard)
-
-document.body.append(list)
+list.append()
+// Создание общей коробки
+document.body.append(addBtn, list)
