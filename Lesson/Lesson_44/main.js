@@ -1,8 +1,11 @@
+// Создание массива элементов
+let notesArr = []
+
 // Функция возрата кнопки
 function getAddBtn(text) {
    let buttonAdd = document.createElement('button')
    buttonAdd.textContent = text
-   return
+   return buttonAdd
 }
 
 // Функция возврата карточки
@@ -56,6 +59,33 @@ let list = getList()
 // Возврат функции добавления кнопки
 let addBtn = getAddBtn('Добавить новую заметку')
 
-list.append()
+// Создание нового объекта при клике
+addBtn.onclick = function () {
+   let titleValue = prompt('Введите название заметки')
+   let imageValue = prompt('Введите путь к изображению')
+   let descValue = prompt('Введите описание заметки')
+
+   let newNoteObj = {
+      title: titleValue,
+      img: imageValue,
+      desc: descValue,
+   }
+
+   // Добавление элементов в массив
+   notesArr.push(newNoteObj)
+
+   // Вызов функции перерисовки
+   render(notesArr)
+}
+
+// Вызов Цикла функции перерисовки
+function render(arrNotes) {
+   list.innerHTML = ''
+   for (let i = 0; i < arrNotes.length; i++) {
+      let newCard = getCard(arrNotes[i])
+      list.append(newCard)
+   }
+}
+
 // Создание общей коробки
 document.body.append(addBtn, list)
