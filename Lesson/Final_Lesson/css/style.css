@@ -1,0 +1,254 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(236, 236, 236);
+  padding: 20px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Главный заголовок */
+.main-title{
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* КАТАЛОГ */
+
+/* Список товаров КАТАЛОГА */
+.products-catalog{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Карточка товара для КАТАЛОГА */
+.products-catalog__item{
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-basis: 240px;
+}
+
+.products-catalog__img{
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.products-catalog__item-bottom{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.products-catalog__title{
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.products-catalog__desc{
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: gray;
+}
+
+.products-catalog__price{
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+
+.products-catalog__add-basket{
+  border: none; 
+  color: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: rgb(123, 191, 27);
+  transition: background-color .3s;
+  cursor: pointer;
+  outline: none;
+}
+
+.products-catalog__add-basket:hover {
+  background-color: rgb(141, 214, 39);
+}
+
+.products-catalog__add-basket:active {
+  background-color: rgb(88, 149, 3);
+}
+
+.products-catalog__add-basket:focus-visible {
+  outline-offset: 2px;
+  outline: 1px solid rgb(123, 191, 27);
+}
+
+/* КОРЗИНА */
+
+/* Кнопка отображения корзины */
+.open-basket-btn {
+  position:fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 80px;
+  height: 80px;
+  border: none; 
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  background-image: url("../img/basket.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+  background-color: rgb(123, 191, 27);
+  transition: background-color .3s;
+  cursor: pointer;
+  outline: none;
+}
+
+.open-basket-btn:hover {
+  background-color: rgb(141, 214, 39);
+}
+
+.open-basket-btn:active {
+  background-color: rgb(88, 149, 3);
+}
+
+.open-basket-btn:focus-visible {
+  outline-offset: 2px;
+  outline: 1px solid rgb(123, 191, 27);
+}
+
+.open-basket-btn_show {
+  background-image: url("../img/close.svg");
+}
+
+/* Блок КОРЗИНЫ */
+.basket{
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  width: 400px;
+  height: calc(100vh - 140px);
+  box-shadow: 0px 5px 19px -3px rgba(0,0,0,0.1);
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.basket_show{
+  display: flex;
+}
+
+/* Список товаров КОРЗИНЫ */
+.products-basket{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  flex-basis: 100%;
+  overflow-y: scroll;
+}
+
+/* Карточка товара для КОРЗИНЫ */
+.products-basket__item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.products-basket__img{
+  display: block;
+  width: 100px;
+  object-fit: contain;
+}
+
+.products-basket__item-right{
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.products-basket__title{
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.products-basket__price{
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.products-basket__remove-btn{
+  border: none; 
+  color: white;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: rgb(114, 114, 114);
+  transition: background-color .3s;
+  cursor: pointer;
+  outline: none;
+}
+
+.products-basket__remove-btn:hover {
+  background-color: rgb(154, 154, 154);
+}
+
+.products-basket__remove-btn:active {
+  background-color: rgb(87, 87, 87);
+}
+
+.products-basket__remove-btn:focus-visible {
+  outline-offset: 2px;
+  outline: 1px solid rgb(114, 114, 114);
+}
+
+.products-basket__not-products{
+  padding: 60px 20px;
+  font-size: 16px;
+  color: gray;
+  text-align: center;
+}
+
+/* Кнопка оформления заказа */
+.order-btn{
+  width: 100%;
+  border: none; 
+  color: white;
+  border-radius: 0;
+  padding: 16px 16px;
+  font-size: 18px;
+  background-color: rgb(212, 46, 52);
+  transition: background-color .3s;
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.order-btn:hover {
+  background-color: rgb(224, 50, 56);
+}
+
+.order-btn:active {
+  background-color: rgb(185, 36, 41);
+}
+
+.order-btn:focus-visible {
+  outline-offset: 2px;
+  outline: 1px solid rgb(212, 46, 52);
+}
