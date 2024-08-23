@@ -92,6 +92,22 @@ let addRemoveDotsBtnEl = getButton('Удалить точки', function (button
    renderText(textEl.value) // Запуск отрисовки
 })
 
+let search = ''
+let searchBtnEl = getButton('Поиск', function (buttonEl) {
+   buttonEl.classList.add('action')
+
+   // Функция поиска текста
+   search = prompt('Найти')
+
+   let fn = function (text) {
+      return text.replaceAll(search, `<span class="find">${search}</span>`)
+   }
+
+   actionsArr.push(fn) // Добавить функцию обработки в массив
+
+   renderText(textEl.value) // Запуск отрисовки
+})
+
 // Кнопка сброса
 let resetBtnEl = getButton('Сбросить', function (buttonEl) {
    actionsArr = [] // Сброс массива
@@ -99,12 +115,18 @@ let resetBtnEl = getButton('Сбросить', function (buttonEl) {
    // Сброс стилей
    addLowerCaseBtnEl.classList.remove('action')
    addRemoveDotsBtnEl.classList.remove('action')
+   searchBtnEl.classList.remove('action')
 
    renderText(textEl.value) // Запуск отрисовки
 })
 resetBtnEl.classList.add('reset')
 
 wrapperTextEl.append(textEl, resultEl)
-wrapperButtonsEl.append(addLowerCaseBtnEl, addRemoveDotsBtnEl, resetBtnEl)
+wrapperButtonsEl.append(
+   addLowerCaseBtnEl,
+   addRemoveDotsBtnEl,
+   searchBtnEl,
+   resetBtnEl
+)
 
 document.body.append(wrapperTextEl, wrapperButtonsEl)
