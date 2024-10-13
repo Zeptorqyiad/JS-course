@@ -1,8 +1,9 @@
 body {
    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
    font-size: 16px;
-   margin: 30px;
-   padding: 0;
+   padding: 30px;
+   height: 100vh;
+   box-sizing: border-box;
 }
 
 ul,
@@ -10,7 +11,23 @@ ol {
    list-style-type: none;
 }
 
-.green {
-   background-color: green;
-   color: white;
+.brush {
+   position: fixed;
+   width: 20px;
+   height: 20px;
+   translate: -50% -50%;
+   border: 2px solid black;
+   border-radius: 50%;
+   transition: scale 0.2s;
+   z-index: 2;
+}
+
+.paint {
+   position: fixed;
+   width: 20px;
+   height: 20px;
+   translate: -50% -50%;
+   border-radius: 50%;
+   background-color: red;
+   z-index: 1;
 }

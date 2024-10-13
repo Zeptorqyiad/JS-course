@@ -1,26 +1,33 @@
-// let fn = function (event) {
-//    let buttonEl = event.target
-//    buttonEl.classList.add('green')
-//    console.log(event.target)
-// }
+let brushEl = document.createElement('div')
+brushEl.classList.add('brush')
+brushEl.hidden = true
 
-// for (let i = 1; i <= 10; i++) {
-//    let buttonEl = document.createElement('button')
-//    buttonEl.textContent = `Кнопка ${i}`
-//    document.body.append(buttonEl)
+document.addEventListener('mouseover', function () {
+   brushEl.hidden = false
+})
+document.addEventListener('mouseout', function () {
+   brushEl.hidden = true
+})
+document.addEventListener('mousemove', function (e) {
+   brushEl.style.left = `${e.clientX}px`
+   brushEl.style.top = `${e.clientY}px`
 
-//    buttonEl.onclick = fn
-// }
+   if (e.buttons === 1) {
+      let paintEl = document.createElement('div')
+      paintEl.classList.add('paint')
 
-let logFn = function (event) {
-   event.preventDefault()
-   console.log('Клик по ссылке')
-}
+      paintEl.style.left = `${e.clientX}px`
+      paintEl.style.top = `${e.clientY}px`
 
-let linkEl = document.createElement('a')
-linkEl.textContent = 'Ссылка'
-linkEl.href = '##'
+      document.body.append(paintEl)
+   }
+})
 
-linkEl.onclick = logFn
+document.addEventListener('mousedown', function () {
+   brushEl.style.scale = '0.8'
+})
+document.addEventListener('mouseup', function () {
+   brushEl.style.scale = '1'
+})
 
-document.body.append(linkEl)
+document.body.append(brushEl)
